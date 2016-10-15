@@ -50,6 +50,7 @@ public class DiskIndicator
 		
 		// eject -------------------------------------
 
+        /*
         item = new Gtk.MenuItem.with_label(_("Eject"));
         menu.append(item);
         var item_eject = item;
@@ -60,6 +61,7 @@ public class DiskIndicator
 		});
 
 		item.activate();
+        */
         
 		// mount -------------------------------------
 		
@@ -392,6 +394,20 @@ public class DiskIndicator
 				
 			case "unmount":
 				item.activate.connect(() => {
+
+					foreach (var mnt in dev.mount_points){
+						switch (mnt.mount_point){
+						case "/":
+						case "/boot":
+						case "/boot/efi":
+						case "/home":
+							string title = _("System Device!");
+							string message = _("System devices cannot be unmounted or locked");
+							gtk_messagebox(title, message, null, true);
+							return;
+						}
+					}
+				
 					// unmount if mounted
 					if (dev.mount_points.size > 0){
 						bool ok = Device.unmount_udisks(dev.device, dummy_window);
@@ -417,6 +433,19 @@ public class DiskIndicator
 			case "lock":
 				item.activate.connect(() => {
 
+					foreach (var mnt in dev.mount_points){
+						switch (mnt.mount_point){
+						case "/":
+						case "/boot":
+						case "/boot/efi":
+						case "/home":
+							string title = _("System Device!");
+							string message = _("System devices cannot be unmounted or locked");
+							gtk_messagebox(title, message, null, true);
+							return;
+						}
+					}
+					
 					// unmount if mounted
 					if (dev.mount_points.size > 0){
 						bool ok = Device.unmount_udisks(dev.device, dummy_window);
