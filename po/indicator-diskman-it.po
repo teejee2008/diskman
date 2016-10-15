@@ -1,0 +1,931 @@
+# Italian translation for apt-toolkit
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the apt-toolkit package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: apt-toolkit\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2014-05-11 08:49+0530\n"
+"PO-Revision-Date: 2014-05-11 10:22+0000\n"
+"Last-Translator: giulux <Unknown>\n"
+"Language-Team: Italian <it@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-07-08 14:36+0000\n"
+"X-Generator: Launchpad (build 17086)\n"
+
+#: src/MainWindow.vala:2134
+#, c-format
+msgid "%ld packages in backup"
+msgstr "%ld pacchetti in backup"
+
+#: src/MainWindow.vala:2165
+#, c-format
+msgid "%ld packages in cache"
+msgstr "%ld pacchetti in cache"
+
+#: src/MainWindow.vala:1101
+msgid "About"
+msgstr "Informazioni"
+
+#: src/MainWindow.vala:159
+msgid "Actions"
+msgstr "Azioni"
+
+#: src/MainWindow.vala:243
+msgid "Add missing PPAs"
+msgstr "Aggiunge PPA mancanti"
+
+#: src/Disk Manager IndicatorConsole.vala:437 src/MainWindow.vala:1707
+msgid "Adding PPA"
+msgstr "Aggiunge PPA"
+
+#: src/MainWindow.vala:1677
+msgid "Adding PPAs..."
+msgstr "Aggiunta PPA ..."
+
+#: src/Disk Manager IndicatorGtk.vala:50
+msgid "Admin Access Required"
+msgstr "Richiesto accesso come amministratore"
+
+#: src/Main.vala:224
+msgid "App config loaded"
+msgstr "Configurazione caricata"
+
+#: src/Main.vala:199
+msgid "App config saved"
+msgstr "Configurazione salvata"
+
+#: src/MainWindow.vala:1102
+msgid "Application Info"
+msgstr "Informazioni sull'applicazione"
+
+#: src/MainWindow.vala:311 src/MainWindow.vala:312 src/MainWindow.vala:1209
+msgid "Application Settings"
+msgstr "Impostazioni Applicazione"
+
+#: src/MainWindow.vala:2314
+msgid "Application settings restored successfully"
+msgstr "Settaggi dell'applicazione ripristinati"
+
+#: src/Disk Manager IndicatorGtk.vala:48
+msgid "Disk Manager Indicator needs admin access to backup and restore packages."
+msgstr ""
+"Accedere come amministratore per il backup e il ripristino dei pacchetti"
+
+#: src/Main.vala:1081 src/MainWindow.vala:2427
+#, c-format
+msgid "Archiving"
+msgstr "Archiviazione in corso"
+
+#: src/Disk Manager IndicatorConsole.vala:96
+msgid "Assume Yes for all prompts"
+msgstr "Rispondi si a tutte le richieste"
+
+#: src/MainWindow.vala:1310
+msgid "Available"
+msgstr "Disponib."
+
+#: src/MainWindow.vala:233 src/MainWindow.vala:262 src/MainWindow.vala:289
+#: src/MainWindow.vala:319 src/MainWindow.vala:348 src/MainWindow.vala:520
+#: src/MainWindow.vala:690 src/MainWindow.vala:850 src/MainWindow.vala:1028
+#: src/MainWindow.vala:1129
+msgid "Backup"
+msgstr "Salvataggio"
+
+#: src/MainWindow.vala:203
+msgid "Backup &amp; Restore"
+msgstr "Backup &amp; Restore"
+
+#: src/MainWindow.vala:1128 src/MainWindow.vala:1136
+msgid "Backup >>"
+msgstr "Backup >>"
+
+#: src/MainWindow.vala:2202
+msgid "Backup Application Settings"
+msgstr "Settaggi del backup"
+
+#: src/MainWindow.vala:167 src/MainWindow.vala:179
+msgid "Backup Directory"
+msgstr "Directory del backup"
+
+#: src/MainWindow.vala:1457
+msgid "Backup Directory Not Selected"
+msgstr "Directory del backup non selezionata"
+
+#: src/MainWindow.vala:1856
+msgid "Backup Software Selections"
+msgstr "Scelta del software da salvare"
+
+#: src/MainWindow.vala:1585
+msgid "Backup Software Sources"
+msgstr "Backup delle sorgenti software"
+
+#: src/MainWindow.vala:2387
+msgid "Backup Themes"
+msgstr "Backup dei Temi"
+
+#: src/MainWindow.vala:321
+msgid "Backup application settings"
+msgstr "Backup dei settaggi"
+
+#: src/MainWindow.vala:1789 src/MainWindow.vala:1913
+msgid "Backup created successfully"
+msgstr "Backup effettuato"
+
+#: src/Disk Manager IndicatorConsole.vala:94
+msgid "Backup directory (defaults to current directory)"
+msgstr "Backup della directory (defaults cartella corrente)"
+
+#: src/Disk Manager IndicatorConsole.vala:83 src/MainWindow.vala:264
+msgid "Backup downloaded packages from APT cache"
+msgstr "Backup dei pacchetti presenti nella cache di APT"
+
+#: src/Disk Manager IndicatorConsole.vala:85
+msgid "Backup icons from /usr/share/icons"
+msgstr "Backup delle icone da /usr/share/icons"
+
+#: src/Disk Manager IndicatorConsole.vala:81
+msgid "Backup list of PPAs"
+msgstr "Backup elenco PPA"
+
+#: src/Disk Manager IndicatorConsole.vala:82
+msgid "Backup list of manual and installed packages"
+msgstr "Backup elenco pacchetti installati"
+
+#: src/MainWindow.vala:235
+msgid "Backup the list of installed PPAs"
+msgstr "Backup elenco PPA installate"
+
+#: src/MainWindow.vala:291
+msgid "Backup the list of installed packages"
+msgstr "Backup elenco pachetti installati"
+
+#: src/MainWindow.vala:350
+msgid "Backup themes and icons"
+msgstr "Backup dei temi e icone"
+
+#: src/Disk Manager IndicatorConsole.vala:84
+msgid "Backup themes from /usr/share/themes"
+msgstr "Backup dei temi da /usr/share/themes"
+
+#: src/MainWindow.vala:2238 src/MainWindow.vala:2434
+msgid "Backups created successfully"
+msgstr "Backup eseguiti"
+
+#: src/Main.vala:1462
+msgid "Bash Command History"
+msgstr "Cronologia comandi bash"
+
+#: src/Main.vala:1464
+msgid "Bash Init Script"
+msgstr "Bash Init Script"
+
+#: src/Main.vala:1466
+msgid "Bash Logout Script"
+msgstr "Bash Logout Script"
+
+#: src/MainWindow.vala:1170
+msgid "Cache"
+msgstr "Cache"
+
+#: src/Main.vala:800 src/MainWindow.vala:2148
+msgid "Cache backup not found in backup directory"
+msgstr "Backup della cache non trovato nella directory di backup"
+
+#: src/MainWindow.vala:532 src/MainWindow.vala:702 src/MainWindow.vala:870
+#: src/MainWindow.vala:1040
+msgid "Cancel"
+msgstr "Cancella"
+
+#: src/MainWindow.vala:2513
+msgid "Change Ownership"
+msgstr "Cambia proprietario"
+
+#: src/MainWindow.vala:2058
+msgid "Checking available packages..."
+msgstr "Verifica dei pacchetti disponibili"
+
+#: src/MainWindow.vala:1553 src/MainWindow.vala:1622 src/MainWindow.vala:1730
+msgid "Checking installed PPAs..."
+msgstr "Verifica delle PPA installate"
+
+#: src/MainWindow.vala:1946
+msgid "Checking installed and available packages..."
+msgstr "Verifica dei pacchetti installati e disponibili"
+
+#: src/MainWindow.vala:1808
+msgid "Checking installed packages..."
+msgstr "Verifica dei pacchetti installati"
+
+#: src/Main.vala:1472
+msgid "Chromium Web Browser"
+msgstr "Browser Web Chromium"
+
+#: src/MainWindow.vala:2045
+msgid "Close window to exit..."
+msgstr "Chiudi finestra per uscire"
+
+#: src/Main.vala:148
+msgid "Commands listed below are not available on this system"
+msgstr "I comandi elencati non disponibili sul sistema"
+
+#: src/MainWindow.vala:712
+msgid "Config"
+msgstr "Configura"
+
+#: src/MainWindow.vala:2032
+msgid "Continue with installation?"
+msgstr "Continuare l'installazione?"
+
+#: src/MainWindow.vala:2515
+msgid "Continue?"
+msgstr "Continuare?"
+
+#: src/MainWindow.vala:2127 src/MainWindow.vala:2158
+msgid "Copying"
+msgstr "Copia"
+
+#: src/MainWindow.vala:1320
+msgid "Default Package (Was Installed with Distribution)"
+msgstr "Pacchetti installati di default con la distro"
+
+#: src/MainWindow.vala:2359
+msgid "Deleting"
+msgstr "Eliminazione"
+
+#: src/MainWindow.vala:461 src/MainWindow.vala:811
+msgid "Description"
+msgstr "Descrizione"
+
+#: src/DonationWindow.vala:63
+msgid ""
+"Did you find this software useful?\n"
+"\n"
+"Please consider making a donation to show your support.\n"
+"\n"
+"This application is completely free and will continue to remain that way. "
+"Your contributions will help in keeping this project alive and developing it "
+"further.\n"
+"\n"
+"Feel free to mail me if you find any issues or if you need any changes in "
+"this application. I can be reached at teejeetech@gmail.com.\n"
+"\n"
+"~Tony George"
+msgstr ""
+"Hai trovato utile questo programa?\n"
+"\n"
+"Prendi in considerazione di fare una donazione per dimostrare il tuo "
+"sostegno.\n"
+"\n"
+"Questo programma è completamente libero e continuerà a rimanere tale. I tuoi "
+"contributi aiuterann a mantenere questo progetto attivo e in ulteriore "
+"sviluppo.\n"
+"\n"
+"Feel free to mail me if you find any issues or if you need any changes in "
+"this application. I can be reached at teejeetech@gmail.com.\n"
+"\n"
+"~Tony George"
+
+#: src/DonationWindow.vala:98
+msgid "Don't Show This Again"
+msgstr "Non mostrarlo di nuovo"
+
+#: src/MainWindow.vala:1084 src/MainWindow.vala:1085
+msgid "Donate"
+msgstr "Dona"
+
+#: src/DonationWindow.vala:76
+msgid "Donate via PayPal"
+msgstr "Dona tramite PayPal"
+
+#: src/MainWindow.vala:1171
+msgid "Downloaded Packages"
+msgstr "Pacchetti scaricati"
+
+#: src/MainWindow.vala:254 src/MainWindow.vala:255
+msgid "Downloaded Packages (APT Cache)"
+msgstr "Pacchetti scaricati (cache di APT)"
+
+#: src/Disk Manager IndicatorConsole.vala:233 src/Disk Manager IndicatorConsole.vala:242
+#: src/MainWindow.vala:1671 src/MainWindow.vala:1684 src/MainWindow.vala:1795
+#: src/MainWindow.vala:1919 src/MainWindow.vala:1933 src/MainWindow.vala:1996
+#: src/MainWindow.vala:2007 src/MainWindow.vala:2536 src/Utility.vala:101
+msgid "Error"
+msgstr "Errore"
+
+#: src/MainWindow.vala:1324
+msgid "Extra Package (Was Installed by User)"
+msgstr "Pacchetto extra (installato dall'utente)"
+
+#: src/Main.vala:1118 src/MainWindow.vala:2304 src/MainWindow.vala:2495
+#, c-format
+msgid "Extracting"
+msgstr "Estrazione in corso"
+
+#: src/Main.vala:1579 src/MainWindow.vala:2537
+msgid "Failed to change file ownership"
+msgstr "Il cambio del proprietario non è riuscito"
+
+#: src/Utility.vala:1036
+msgid "Failed to kill process"
+msgstr "Impossibile uccidere il processo"
+
+#: src/Utility.vala:2062
+msgid "Failed to set ownership"
+msgstr "Assegnazione del proprietario non riuscita"
+
+#: src/Utility.vala:1019 src/Utility.vala:1045
+msgid "Failed to unmount"
+msgstr "Impossibile smontare"
+
+#: src/Disk Manager IndicatorConsole.vala:182 src/Disk Manager IndicatorConsole.vala:195 src/Main.vala:455
+#: src/Main.vala:487 src/Main.vala:609 src/MainWindow.vala:1685
+#: src/MainWindow.vala:1796 src/MainWindow.vala:1920 src/MainWindow.vala:1934
+msgid "Failed to write"
+msgstr "Impossibile scrivere"
+
+#: src/MainWindow.vala:2008
+msgid "Failed to write file"
+msgstr "Scrittura del file non riuscita"
+
+#: src/MainWindow.vala:1469
+msgid "File Not Found"
+msgstr "File non trovato."
+
+#: src/Main.vala:1107 src/Main.vala:1486
+msgid "File not found"
+msgstr "File non trovato"
+
+#: src/Main.vala:164 src/MainWindow.vala:1470
+msgid "File not found in backup directory"
+msgstr "File non trovato nella directory di backup"
+
+#: src/Disk Manager IndicatorConsole.vala:179 src/Disk Manager IndicatorConsole.vala:192 src/Main.vala:452
+#: src/Main.vala:484 src/Main.vala:606
+msgid "File saved"
+msgstr "File salvato"
+
+#: src/MainWindow.vala:2147
+msgid "Files Not Found"
+msgstr "File non trovati"
+
+#: src/MainWindow.vala:1759 src/MainWindow.vala:1788 src/MainWindow.vala:1912
+#: src/MainWindow.vala:2130 src/MainWindow.vala:2132 src/MainWindow.vala:2161
+#: src/MainWindow.vala:2163 src/MainWindow.vala:2237 src/MainWindow.vala:2313
+#: src/MainWindow.vala:2364 src/MainWindow.vala:2433 src/MainWindow.vala:2502
+msgid "Finished"
+msgstr "Finito"
+
+#: src/MainWindow.vala:2044
+msgid "Finished installing packages"
+msgstr "Installazione dei pacchetti terminata"
+
+#: src/MainWindow.vala:1772
+msgid "Finished with Errors"
+msgstr "Terminato con errori"
+
+#: src/Main.vala:1452
+msgid "Firefox Web Browser"
+msgstr "Browser web Firefox"
+
+#: src/MainWindow.vala:1488
+msgid "Folder Not Found"
+msgstr "Cartella non trovata"
+
+#: src/MainWindow.vala:1489
+msgid "Folder not found in backup directory"
+msgstr "Cartella non trovata nella directory di backup"
+
+#: src/MainWindow.vala:1773
+msgid "Following PPAs could not be added"
+msgstr "Impossibile aggiungere le seguenti PPA"
+
+#: src/Disk Manager IndicatorConsole.vala:413 src/MainWindow.vala:2019 src/MainWindow.vala:2099
+msgid "Following packages are NOT available"
+msgstr "I sguenti pacchetti non sono disponibili"
+
+#: src/Disk Manager IndicatorConsole.vala:417
+msgid "Following packages will be installed"
+msgstr "Saranno installati i seguenti pacchetti"
+
+#: src/MainWindow.vala:2030
+msgid "Install Summary"
+msgstr "Riepilogo installazione"
+
+#: src/MainWindow.vala:300
+msgid "Install missing packages"
+msgstr "Installa i pacchetti mancanti"
+
+#: src/MainWindow.vala:1306 src/MainWindow.vala:1422
+msgid "Installed"
+msgstr "Installato"
+
+#: src/MainWindow.vala:1190
+msgid "Installed Packages"
+msgstr "Pacchetti installati"
+
+#: src/MainWindow.vala:2038
+msgid "Installing packages..."
+msgstr "Installazione dei pacchetti ..."
+
+#: src/Disk Manager IndicatorConsole.vala:233 src/Disk Manager IndicatorConsole.vala:242
+#: src/MainWindow.vala:1672 src/MainWindow.vala:1997
+msgid ""
+"Internet connection is not active. Please check the connection and try again."
+msgstr ""
+"Connessione internet non disponibile. Verificare la connessione e riprovare"
+
+#: src/Utility.vala:1029
+msgid "Killing all processes using the mount-point..."
+msgstr ""
+"Uccisione di tutti i processi che utilizzano il punto di montaggio..."
+
+#: src/LogWindow.vala:64
+msgid "Line"
+msgstr "Riga"
+
+#: src/Disk Manager IndicatorConsole.vala:77
+msgid "List PPAs"
+msgstr "Elenca PPA"
+
+#: src/Disk Manager IndicatorConsole.vala:72
+msgid "List available packages"
+msgstr "Elenca pacchetti disponibili"
+
+#: src/Disk Manager IndicatorConsole.vala:76
+msgid "List default packages for linux distribution"
+msgstr "Elenca i pacchetti di default della distro"
+
+#: src/Disk Manager IndicatorConsole.vala:79
+msgid "List icon themes in /usr/share/icons"
+msgstr "Elenca i temi delle icone in /usr/share/icons"
+
+#: src/Disk Manager IndicatorConsole.vala:73
+msgid "List installed packages"
+msgstr "Elenca pacchetti installati"
+
+#: src/MainWindow.vala:1790 src/MainWindow.vala:1914
+msgid "List saved with file name"
+msgstr "Elenca salvati con nome"
+
+#: src/Disk Manager IndicatorConsole.vala:78
+msgid "List themes in /usr/share/themes"
+msgstr "Elenca i temi in /usr/share/themes"
+
+#: src/Disk Manager IndicatorConsole.vala:74
+msgid "List top-level installed packages"
+msgstr "Elenca i pacchetti principali (senza dipendenze)"
+
+#: src/Disk Manager IndicatorConsole.vala:75
+msgid "List top-level packages installed by user"
+msgstr ""
+"Elenca i pacchetti principali installati dall'utente (senza dipendenze)"
+
+#: src/Main.vala:1458 src/Main.vala:1468
+msgid "Local Fonts"
+msgstr "Font locali"
+
+#: src/Main.vala:1460 src/Main.vala:1470
+msgid "Local Themes"
+msgstr "Temi locali"
+
+#: src/LogWindow.vala:49
+msgid "Log"
+msgstr "Log"
+
+#: src/Main.vala:101
+msgid "Missing Dependencies"
+msgstr "Dipendenze mancanti"
+
+#: src/Main.vala:1625
+msgid "Missing Icon"
+msgstr "Icona mancante"
+
+#: src/LogWindow.vala:100
+msgid "No"
+msgstr "No"
+
+#: src/MainWindow.vala:2219
+msgid "No Directories Selected"
+msgstr "Nessuna directory selezionata"
+
+#: src/MainWindow.vala:1602
+msgid "No PPA Selected"
+msgstr "Nessuna PPA selezionata"
+
+#: src/MainWindow.vala:1873
+msgid "No Packages Selected"
+msgstr "Nessun pacchetto selezionato"
+
+#: src/MainWindow.vala:2404
+msgid "No Themes Selected"
+msgstr "Nessun tema selezionato"
+
+#: src/MainWindow.vala:1314
+msgid "Not Available! Check if PPA needs to be added"
+msgstr "Non disponibile! Verificare se deve essere aggiunta la PPA"
+
+#: src/MainWindow.vala:1310 src/MainWindow.vala:1426
+msgid "Not Installed"
+msgstr "Non installato"
+
+#: src/MainWindow.vala:1664 src/MainWindow.vala:1989 src/MainWindow.vala:2016
+#: src/MainWindow.vala:2275 src/MainWindow.vala:2330 src/MainWindow.vala:2469
+msgid "Nothing To Do"
+msgstr "Niente da eseguire"
+
+#: src/DonationWindow.vala:108
+msgid "OK"
+msgstr "OK"
+
+#: src/LogWindow.vala:83
+msgid "Ok"
+msgstr "OK"
+
+#: src/MainWindow.vala:191
+msgid "Open"
+msgstr "Apri"
+
+#: src/MainWindow.vala:193
+msgid "Open Backup Directory"
+msgstr "Apri la directory di backup"
+
+#: src/Main.vala:1456
+msgid "Opera Web Browser"
+msgstr "Browser Web Opera"
+
+#: src/Disk Manager IndicatorConsole.vala:70
+msgid "Options"
+msgstr "Opzioni"
+
+#: src/MainWindow.vala:2514
+#, c-format
+msgid "Owner will be changed to '%s' (uid=%d) for files in directory '%s'"
+msgstr ""
+"Il proprietario sarà cambiato in '%s' (uid=%d) per i file nella directory "
+"'%s'"
+
+#: src/Main.vala:1575
+#, c-format
+msgid "Ownership changed to '%s' for files in directory '%s'"
+msgstr "Il proprietario dei file nella directory '%s' è ora '%s'"
+
+#: src/MainWindow.vala:541 src/MainWindow.vala:614 src/MainWindow.vala:1151
+msgid "PPA"
+msgstr "PPA"
+
+#: src/MainWindow.vala:1376 src/MainWindow.vala:1380
+#, c-format
+msgid "PPA is Enabled (%d installed packages)"
+msgstr "PPA attiva ( pacchetti installati in %d )"
+
+#: src/MainWindow.vala:1385
+msgid "PPA is Not Added"
+msgstr "PPA non aggiunta"
+
+#: src/MainWindow.vala:1760
+msgid "PPAs added successfully"
+msgstr "PPA aggiunta"
+
+#: src/MainWindow.vala:444
+msgid "Package"
+msgstr "Pacchetto"
+
+#: src/MainWindow.vala:369 src/MainWindow.vala:631 src/MainWindow.vala:1189
+msgid "Packages"
+msgstr "Pacchetti"
+
+#: src/MainWindow.vala:2133 src/MainWindow.vala:2164
+msgid "Packages copied successfully"
+msgstr "I pacchetti sono stati copiati"
+
+#: src/MainWindow.vala:773 src/MainWindow.vala:969
+msgid "Path"
+msgstr "Percorso"
+
+#: src/Main.vala:149
+msgid "Please install required packages and try running Disk Manager Indicator again"
+msgstr ""
+"Installare i pacchetti richiesti e provare a lanciare nuovamente Disk Manager Indicator"
+
+#: src/Disk Manager IndicatorGtk.vala:49
+msgid "Please run the application as admin ('gksu indicator-diskman-gtk')"
+msgstr "Avviare il programma come amministratore ('gksu indicator-diskman-gtk')"
+
+#: src/MainWindow.vala:1458
+msgid "Please select the backup directory"
+msgstr "Scegliere la directory di backup"
+
+#: src/MainWindow.vala:2331
+msgid "Please select the directories to reset"
+msgstr "Scegliere le cartelle da resettare"
+
+#: src/MainWindow.vala:2276
+msgid "Please select the directories to restore"
+msgstr "Scegliere le cartelle da ripristinare"
+
+#: src/MainWindow.vala:2122 src/MainWindow.vala:2153 src/MainWindow.vala:2226
+#: src/MainWindow.vala:2282 src/MainWindow.vala:2337 src/MainWindow.vala:2410
+#: src/MainWindow.vala:2476
+msgid "Preparing"
+msgstr "Preparazione"
+
+#: src/MainWindow.vala:863
+msgid "Reset"
+msgstr "Resetta"
+
+#: src/MainWindow.vala:865
+msgid ""
+"Reset the settings for an application (Eg: Chromium Browser) by deleting the "
+"settings directory (~/.config/chromium). The directory will be created "
+"automatically with default configuration files on the next run of the "
+"application."
+msgstr ""
+"Resetta una applicazione (ad es. Chromium Browser) cancellando la directory "
+"di configurazione  (~/.config/chromium). Al prossimo avvio dell'applicazione "
+"sarà automaticamente ricreata la stessa directory, con i valori di default"
+
+#: src/MainWindow.vala:241 src/MainWindow.vala:269 src/MainWindow.vala:298
+#: src/MainWindow.vala:327 src/MainWindow.vala:356 src/MainWindow.vala:526
+#: src/MainWindow.vala:696 src/MainWindow.vala:856 src/MainWindow.vala:1034
+msgid "Restore"
+msgstr "Ripristino"
+
+#: src/MainWindow.vala:1139
+msgid "Restore >>"
+msgstr "Ripristino >>"
+
+#: src/MainWindow.vala:2257
+msgid "Restore Application Settings"
+msgstr "Ripristino dei settaggi dell'applicazione"
+
+#: src/Disk Manager IndicatorConsole.vala:87
+msgid "Restore PPAs from file 'ppa.list'"
+msgstr "Ripristina le PPA dal file 'ppa.list'"
+
+#: src/MainWindow.vala:1972
+msgid "Restore Software Selections"
+msgstr "Ripristina il software scelto"
+
+#: src/MainWindow.vala:1647
+msgid "Restore Software Sources"
+msgstr "Ripristina fonti software"
+
+#: src/MainWindow.vala:2451
+msgid "Restore Themes"
+msgstr "Ripristina i temi"
+
+#: src/MainWindow.vala:329
+msgid "Restore application settings"
+msgstr "Ripristina i settaggi delle applicazioni"
+
+#: src/Disk Manager IndicatorConsole.vala:89 src/MainWindow.vala:271
+msgid "Restore downloaded packages to APT cache"
+msgstr "Ripristina i software scaricati nella cache di APT"
+
+#: src/Disk Manager IndicatorConsole.vala:91
+msgid "Restore icons to /usr/share/icons"
+msgstr "Ripristina le icone in /usr/share/icons"
+
+#: src/Disk Manager IndicatorConsole.vala:88
+msgid "Restore packages from file 'packages.list'"
+msgstr "Ripristina i pacchetti dal file 'packages.list'"
+
+#: src/MainWindow.vala:858
+msgid ""
+"Restore the settings for an application (Eg: Chromium Browser) by replacing "
+"the settings directory (~/.config/chromium) with files from backup. Use the "
+"'Reset' button to delete the restored files in case of issues."
+msgstr ""
+"Ripristina i settaggi di un'applicazione (ad es. Chromium Browser) "
+"sostituendo la cartella di configurazione  (~/.config/chromium) con i file "
+"del backup.Nel caso di problemi usare il pulsante 'Reset' per cancellare i "
+"file ripristinati."
+
+#: src/MainWindow.vala:358
+msgid "Restore themes and icons"
+msgstr "Ripristina temi ed icone"
+
+#: src/Disk Manager IndicatorConsole.vala:90
+msgid "Restore themes to /usr/share/themes"
+msgstr "Ripristina i temi in  /usr/share/themes"
+
+#: src/Main.vala:1527
+#, c-format
+msgid "Restoring Application Settings..."
+msgstr "Ripristino dei settaggi dell'applicazione in corso"
+
+#: src/MainWindow.vala:2004
+msgid "Saving"
+msgstr "Salvataggio"
+
+#: src/Main.vala:1289
+#, c-format
+msgid "Saving Application Settings..."
+msgstr "Salvataggio dei settaggi dell'applicazione ..."
+
+#: src/MainWindow.vala:480 src/MainWindow.vala:650 src/MainWindow.vala:830
+#: src/MainWindow.vala:988
+msgid "Select All"
+msgstr "Seleziona tutto"
+
+#: src/MainWindow.vala:500 src/MainWindow.vala:670 src/MainWindow.vala:840
+#: src/MainWindow.vala:1008
+msgid "Select None"
+msgstr "Non selezionare niente"
+
+#: src/MainWindow.vala:1854
+msgid "Select packages to backup"
+msgstr "Scegliere i pacchetti da salvare"
+
+#: src/MainWindow.vala:549 src/MainWindow.vala:1584 src/MainWindow.vala:1603
+msgid "Select the PPAs to backup"
+msgstr "Scegliere le PPA da salvare"
+
+#: src/MainWindow.vala:1646
+msgid "Select the PPAs to restore"
+msgstr "Scegliere le PPA da ripristinare"
+
+#: src/MainWindow.vala:720
+msgid "Select the configs to backup"
+msgstr "Scegliere le configurazioni  da salvare"
+
+#: src/MainWindow.vala:2201 src/MainWindow.vala:2220
+msgid "Select the directories to backup"
+msgstr "Scegliere le directory da salvare"
+
+#: src/MainWindow.vala:2256
+msgid "Select the directories to restore"
+msgstr "Scegliere le directory da ripristinare"
+
+#: src/MainWindow.vala:377 src/MainWindow.vala:1874
+msgid "Select the packages to backup"
+msgstr "Scegliere i pacchetti da salvare"
+
+#: src/MainWindow.vala:1971
+msgid "Select the packages to restore"
+msgstr "Scegliere i pacchetti da ripristinare"
+
+#: src/MainWindow.vala:887 src/MainWindow.vala:2386 src/MainWindow.vala:2405
+msgid "Select the themes to backup"
+msgstr "Scegliere i temi da salvare"
+
+#: src/MainWindow.vala:2450
+msgid "Select the themes to restore"
+msgstr "Scegliere i temi ripristinare"
+
+#: src/MainWindow.vala:1665
+msgid "Selected PPAs are already enabled on this system"
+msgstr "Le PPA selezionate sono già installate nel sistema"
+
+#: src/MainWindow.vala:2365
+msgid "Selected directories were deleted successfully"
+msgstr "Le directory selezionate sono state cancellate"
+
+#: src/MainWindow.vala:2342
+msgid "Selected directories will be deleted."
+msgstr "Le directory selezionate saranno cancellate"
+
+#: src/MainWindow.vala:2287
+msgid "Selected directories will be replaced with files from backup."
+msgstr "Le directory selezionate sostituite con i file del backup"
+
+#: src/Disk Manager IndicatorConsole.vala:421
+msgid "Selected packages are already installed"
+msgstr "I pacchetti selezionati sono già installati"
+
+#: src/MainWindow.vala:2470
+msgid "Selected themes are already installed"
+msgstr "I temi selezionati sono già installati"
+
+#: src/DonationWindow.vala:83
+msgid "Send Email"
+msgstr "Invia Email"
+
+#: src/MainWindow.vala:1208
+msgid "Settings"
+msgstr "impostazioni"
+
+#: src/Disk Manager IndicatorConsole.vala:97
+msgid "Show all options"
+msgstr "Mostra tutte le opzioni"
+
+#: src/Disk Manager IndicatorConsole.vala:95
+msgid "Show package description if available"
+msgstr "Mostra la descrizione del pacchetto se disponibile"
+
+#: src/MainWindow.vala:788
+msgid "Size"
+msgstr "Dimensione"
+
+#: src/MainWindow.vala:281
+msgid "Software Selections"
+msgstr "Scelte del software"
+
+#: src/MainWindow.vala:282
+msgid "Software Selections (Installed Packages)"
+msgstr "Scelte del software (pacchetti installati)"
+
+#: src/MainWindow.vala:1152
+msgid "Software Sources"
+msgstr "Sorgenti software"
+
+#: src/MainWindow.vala:225
+msgid "Software Sources (PPAs)"
+msgstr "Sorgenti software (PPA)"
+
+#: src/MainWindow.vala:226
+msgid "Software Sources (Third Party PPAs)"
+msgstr "Sorgenti software (PPA di terze parti)"
+
+#: src/Main.vala:1474
+msgid "Startup Applications"
+msgstr "Applicazioni d'avvio"
+
+#: src/Utility.vala:1530
+msgid "Stopped"
+msgstr "Fermato"
+
+#: src/MainWindow.vala:2531
+msgid "Success"
+msgstr "Operazione riuscita"
+
+#: src/Disk Manager IndicatorConsole.vala:68
+msgid "Syntax"
+msgstr "Sintassi"
+
+#: src/MainWindow.vala:1527
+msgid "System migration toolkit for Ubuntu-based distributions"
+msgstr "Strumenti per la migrazione di distribuzioni basate su Ubuntu"
+
+#: src/Disk Manager IndicatorConsole.vala:93
+msgid "Take ownership of files in your home directory"
+msgstr "Diventa proprietario dei file nella tua /home"
+
+#: src/MainWindow.vala:879 src/MainWindow.vala:952
+msgid "Theme"
+msgstr "Tema"
+
+#: src/MainWindow.vala:1227
+msgid "Themes"
+msgstr "Temi"
+
+#: src/MainWindow.vala:1228
+msgid "Themes & Icons"
+msgstr "Temi & icone"
+
+#: src/MainWindow.vala:340 src/MainWindow.vala:341
+msgid "Themes and Icons"
+msgstr "Temi ed icone"
+
+#: src/Main.vala:1026
+msgid "Themes not found in backup directory"
+msgstr "Temi non trovati nella directory di backup"
+
+#: src/MainWindow.vala:2503
+msgid "Themes restored successfully"
+msgstr "Temi ripristinati"
+
+#: src/MainWindow.vala:1990 src/MainWindow.vala:2021
+msgid "There are no packages selected for installation"
+msgstr "Non sono stati scelti pacchetti da installare"
+
+#: src/Disk Manager IndicatorConsole.vala:301
+msgid "Unknown option"
+msgstr "Opzione sconosciuta"
+
+#: src/Utility.vala:1007
+msgid "Unmounting from"
+msgstr "Smontaggio da"
+
+#: src/Disk Manager IndicatorConsole.vala:448 src/MainWindow.vala:1721
+msgid "Updating Package Information..."
+msgstr "Aggiornamento delle informazioni sul pacchetto"
+
+#: src/MainWindow.vala:2308
+msgid "Updating file ownership"
+msgstr "Aggiornamento proprietà del file"
+
+#: src/DonationWindow.vala:90
+msgid "Visit Website"
+msgstr "Visita il sito web"
+
+#: src/MainWindow.vala:2286 src/MainWindow.vala:2341 src/Utility.vala:101
+msgid "Warning"
+msgstr "Attenzione"
+
+#: src/LogWindow.vala:91
+msgid "Yes"
+msgstr "Sì"
+
+#: src/MainWindow.vala:2532
+msgid "You are now the owner of all files in your home directory"
+msgstr "Ora sei proprietario dei file nella tua directory /home"
+
+#: src/MainWindow.vala:2232
+msgid "Zipping"
+msgstr "Compressione in corso"

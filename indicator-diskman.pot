@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Tony George (teejee2008@gmail.com)
+# This file is distributed under the same license as the indicator-diskman package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: indicator-diskman 1.6\n"
+"Report-Msgid-Bugs-To: teejee2008@gmail.com\n"
+"POT-Creation-Date: 2016-10-15 19:22+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: Main.vala:177
+msgid "Admin Access Required"
+msgstr ""
+
+#: Main.vala:351
+msgid "App config loaded"
+msgstr ""
+
+#: Main.vala:312
+msgid "App config saved"
+msgstr ""
+
+#: Main.vala:202
+msgid "Commands listed below are not available on this system"
+msgstr ""
+
+#: DiskIndicator.vala:582
+msgid "Disk Indicator for Linux"
+msgstr ""
+
+#: DiskIndicator.vala:323
+#, c-format
+msgid "Disk can be safely removed"
+msgstr ""
+
+#: Main.vala:262
+msgid "Distribution"
+msgstr ""
+
+#: DiskIndicator.vala:53
+msgid "Eject"
+msgstr ""
+
+#: DiskIndicator.vala:504
+msgid "Encrypted Device"
+msgstr ""
+
+#: DiskIndicator.vala:505
+#, c-format
+msgid "Enter passphrase to unlock '%s'"
+msgstr ""
+
+#: DiskIndicator.vala:442
+msgid "Failed to lock"
+msgstr ""
+
+#: DiskIndicator.vala:466
+msgid "Failed to unlock"
+msgstr ""
+
+#: DiskIndicator.vala:384
+#, c-format
+msgid "Is Mounted"
+msgstr ""
+
+#: DiskIndicator.vala:437
+#, c-format
+msgid "Locked"
+msgstr ""
+
+#: Main.vala:207
+msgid "Missing Dependencies"
+msgstr ""
+
+#: DiskIndicator.vala:69
+msgid "Mount"
+msgstr ""
+
+#: DiskIndicator.vala:377
+#, c-format
+msgid "Mounted"
+msgstr ""
+
+#: DiskIndicator.vala:408
+#, c-format
+msgid "Not mounted"
+msgstr ""
+
+#: Main.vala:393
+msgid "Older log files removed"
+msgstr ""
+
+#: Main.vala:203
+msgid ""
+"Please install required packages and try running Disk Manager Indicator again"
+msgstr ""
+
+#: Main.vala:172
+msgid "Please re-run the application as admin."
+msgstr ""
+
+#: Main.vala:259
+msgid "Running"
+msgstr ""
+
+#: Main.vala:243
+msgid "Session log file"
+msgstr ""
+
+#: Main.vala:171
+msgid "This application requires admin access to perform some actions."
+msgstr ""
+
+#: DiskIndicator.vala:111
+msgid "Unlock"
+msgstr ""
+
+#: DiskIndicator.vala:461
+#, c-format
+msgid "Unlocked"
+msgstr ""
+
+#: DiskIndicator.vala:82
+msgid "Unmount"
+msgstr ""
+
+#: DiskIndicator.vala:322 DiskIndicator.vala:402
+#, c-format
+msgid "Unmounted"
+msgstr ""

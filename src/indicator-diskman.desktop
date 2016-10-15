@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Disk Indicator
+MimeType=
+Exec=indicator-diskman
+Type=Application
+GenericName=Disk Indicator
+Terminal=false
+Icon=indicator-diskman
+Comment=Disk Indicator
+X-KDE-StartupNotify=false
+Categories=System;
+Name[en_IN]=Disk Indicator
