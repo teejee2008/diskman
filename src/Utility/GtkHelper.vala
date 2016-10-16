@@ -314,11 +314,8 @@ namespace TeeJee.GtkHelper{
 		return count;
 	}
 
-	public void gtk_stripe_row(
-		Gtk.CellRenderer cell,
-		bool odd_row,
-		string odd_color = "#F4F6F7",
-		string even_color = "#FFFFFF"){
+	public void gtk_stripe_row(Gtk.CellRenderer cell,
+		bool odd_row, string odd_color = "#F4F6F7", string even_color = "#FFFFFF"){
 
 		if (cell is Gtk.CellRendererText){
 			(cell as Gtk.CellRendererText).background = odd_row ? odd_color : even_color;
@@ -347,12 +344,8 @@ namespace TeeJee.GtkHelper{
 	}
 
 	public Gtk.MenuItem gtk_menu_add_item(
-		Gtk.Menu menu,
-		string label,
-		string tooltip,
-		Gtk.Image? icon_image,
-		Gtk.SizeGroup? sg_icon = null,
-		Gtk.SizeGroup? sg_label = null){
+		Gtk.Menu menu, string label, string tooltip,
+		Gtk.Image? icon_image, Gtk.SizeGroup? sg_icon = null, Gtk.SizeGroup? sg_label = null){
 
 		var menu_item = new Gtk.MenuItem();
 		menu.append(menu_item);
@@ -456,7 +449,42 @@ namespace TeeJee.GtkHelper{
 	}
 	
 	// file chooser ----------------
+
+	public Gee.ArrayList<string> gtk_select_files(Gtk.Window? parent_window,
+		bool select_files = true, bool select_multiple = false){
+		
+		Gtk.FileChooserDialog dlg = null;
+
+		if (select_files){
+			dlg = new Gtk.FileChooserDialog(_("Add File(s)"), parent_window, Gtk.FileChooserAction.OPEN,
+					"gtk-cancel", Gtk.ResponseType.CANCEL, "gtk-open", Gtk.ResponseType.ACCEPT);
+		}
+		else{
+			dlg = new Gtk.FileChooserDialog(_("Add Folder(s)"), parent_window, Gtk.FileChooserAction.SELECT_FOLDER,
+					"gtk-cancel", Gtk.ResponseType.CANCEL, "gtk-open", Gtk.ResponseType.ACCEPT);
+		}
+
+		dlg.local_only = true;
+ 		dlg.set_modal (true);
+ 		dlg.set_select_multiple (select_multiple);
+
+		var list = new Gee.ArrayList<string>();
+		
+ 		if (dlg.run() == Gtk.ResponseType.ACCEPT){
+			//get file list
+			foreach (string item_path in dlg.get_filenames()){
+				list.add(item_path);
+			}
+	 	}
+
+		dlg.close();
+		//dlg.destroy();
+		gtk_do_events();
+
+		return list;
+	}
 	
+		
 	public Gtk.FileFilter create_file_filter(string group_name, string[] patterns) {
 		var filter = new Gtk.FileFilter ();
 		filter.set_filter_name(group_name);

@@ -210,6 +210,10 @@ public class Device : GLib.Object{
 				}
 			}
 		}
+		else if ((type == "loop") && has_children()){
+			s += _("Loop Device");
+			s += (label.length > 0) ? " - " + label + "": "";
+		}
 		else{
 			s += "<b>" + short_name_with_parent + "</b>" ;
 			s += (label.length > 0) ? " (" + label + ")": "";
@@ -721,6 +725,8 @@ public class Device : GLib.Object{
 		}
 
 		device_list = list;
+
+		// find relationships ------------------------
 
 		foreach (var part in list){
 			find_child_devices(list, part);
@@ -1342,7 +1348,7 @@ public class Device : GLib.Object{
 			foreach(var dev in list){
 				if ((dev.pkname == loop_device.replace("/dev/","")) && (dev.fstype == "iso9660")){
 					loop_device = dev.device;
-					return automount_udisks(dev.device, parent_window);
+					return true;
 				}
 			}
 		}

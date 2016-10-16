@@ -27,10 +27,12 @@ public class DiskIndicator
         this.name = "Disk Manager";
         this.icon = "disks";
         this.indicator = new Indicator(
-			"Indicator_DiskMan", icon, IndicatorCategory.APPLICATION_STATUS);
-                                       
+			"indicator_diskman", icon, IndicatorCategory.APPLICATION_STATUS);
+              
         indicator.set_status(IndicatorStatus.ACTIVE);
 
+		indicator.icon_theme_path = "/usr/share/%s/images".printf(AppShortName);
+		
 		refresh_device_list();
 		
         var menu = new Gtk.Menu();
@@ -183,16 +185,20 @@ public class DiskIndicator
 		for(int i=0; i < device_list.size; i++){
 			
 			var dev = device_list[i];
+
+			if (dev.size_bytes < 10 * KB){
+				continue;
+			}
 			
 			switch(action){
 			case "open":
-				bool show = (dev.type == "disk") || !dev.is_encrypted_partition() || !dev.has_children(); 
+				bool show = (dev.type == "disk") || (dev.type == "loop")  || !dev.is_encrypted_partition() || !dev.has_children(); 
 				if (!show){
 					continue;
 				}
 				break;
 			case "eject":
-				bool show = (dev.type == "disk") && (dev.removable); 
+				bool show = ((dev.type == "disk") || (dev.type == "loop")) && (dev.removable); 
 				if (!show){
 					continue;
 				}
@@ -204,7 +210,9 @@ public class DiskIndicator
 				}
 				break;
 			case "unmount":
-				bool show = (dev.type == "disk") || (dev.mount_points.size > 0); 
+				bool show = (dev.type == "disk")
+					|| ((dev.type == "loop") && dev.has_children())
+					|| (dev.mount_points.size > 0); 
 				if (!show){
 					continue;
 				}
@@ -231,7 +239,7 @@ public class DiskIndicator
 			else if (dev.fstype.contains("luks")){
 				icon = get_shared_icon("","locked.png",16);
 			}
-			else if (dev.fstype.contains("iso9660")){
+			else if (dev.fstype.contains("iso9660") || (dev.type == "loop")){
 				icon = get_shared_icon("media-cdrom","media-cdrom.png",16);
 			}
 			else{
@@ -250,7 +258,7 @@ public class DiskIndicator
 			item.set_reserve_indicator(false);
 			menu.append(item);
 			
-			if (dev.type != "disk"){
+			if (((dev.type == "loop") && dev.has_parent()) || (dev.type == "crypt") || (dev.type == "part") || (dev.type == "lvm")){
 				item.always_show_image = true;
 				item.set_image(icon);
 			}
@@ -270,7 +278,7 @@ public class DiskIndicator
 			
 			switch(action){
 			case "eject":
-				if (dev.type == "disk"){
+				if ((dev.type == "disk") || ((dev.type == "loop") && (dev.has_children()))){
 					item.sensitive = false;
 					foreach(var child in dev.children){
 						if (child.has_children()){
@@ -295,7 +303,7 @@ public class DiskIndicator
 			case "unmount":
 			case "lock":
 			case "unlock":
-				if (dev.type == "disk"){
+				if ((dev.type == "disk") || ((dev.type == "loop") && (dev.has_children()))){
 					item.sensitive = false;
 				}
 				break;
@@ -504,6 +512,45 @@ public class DiskIndicator
 				break;
 			}
 		}
+
+		// mount iso  -------------------------------------
+
+		if (action == "mount"){
+			
+			var separator = new Gtk.SeparatorMenuItem ();
+			menu.add (separator);
+			
+			var item = new Gtk.ImageMenuItem.with_label (_("Mount ISO..."));
+			item.set_reserve_indicator(false);
+			menu.append(item);
+			
+			item.always_show_image = true;
+			var icon = get_shared_icon("media-optical","media-optical.png",16);
+			item.set_image(icon);
+
+			item.activate.connect(() => {
+
+				var selected_files = gtk_select_files(dummy_window);
+				string iso_file = (selected_files.size > 0) ? selected_files[0] : "";
+				if ((iso_file.length == 0) || !file_exists(iso_file)){
+					return;
+				}
+
+				string loop_name = "";
+				bool ok = Device.automount_udisks_iso(iso_file, out loop_name, dummy_window);
+				
+				if (ok){
+					string title = "%s".printf(_("Mounted ISO File"));
+					string msg = "%s".printf(loop_name);
+					OSDNotify.notify_send(title, msg, 2000, "normal", "info");
+				}
+				else{
+
+
+				}
+			});
+		}
+        
 
 		menu.show_all();
 		
