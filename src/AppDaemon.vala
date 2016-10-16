@@ -38,7 +38,7 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Disk Indicator Daemon";
 public const string AppShortName = "indicator-diskman-daemon";
-public const string AppVersion = "16.10";
+public const string AppVersion = "16.10.1";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
