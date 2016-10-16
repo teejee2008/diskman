@@ -340,6 +340,13 @@ public class DiskIndicator
 			case "open":
 				item.activate.connect(() => {
 
+					if (dev.fstype == "swap"){
+						string title = _("Swap Device!");
+						string message = _("Swap devices cannot be opened in file manager");
+						gtk_messagebox(title, message, null, true);
+						return;
+					}
+							
 					// unlock
 					if (dev.is_encrypted_partition()){
 						var dev_unlocked = luks_unlock(dev);
@@ -403,17 +410,28 @@ public class DiskIndicator
 			case "unmount":
 				item.activate.connect(() => {
 
+					bool is_system = false;
 					foreach (var mnt in dev.mount_points){
 						switch (mnt.mount_point){
 						case "/":
 						case "/boot":
 						case "/boot/efi":
 						case "/home":
-							string title = _("System Device!");
-							string message = _("System devices cannot be unmounted or locked");
-							gtk_messagebox(title, message, null, true);
-							return;
+							is_system = true;
+							break;
+						default:
+							if (dev.fstype == "swap"){
+								is_system = true;
+							}
+							break;
 						}
+					}
+
+					if (is_system){
+						string title = _("System Device!");
+						string message = _("System devices cannot be unmounted");
+						gtk_messagebox(title, message, null, true);
+						return;
 					}
 				
 					// unmount if mounted
@@ -441,17 +459,28 @@ public class DiskIndicator
 			case "lock":
 				item.activate.connect(() => {
 
+					bool is_system = false;
 					foreach (var mnt in dev.mount_points){
 						switch (mnt.mount_point){
 						case "/":
 						case "/boot":
 						case "/boot/efi":
 						case "/home":
-							string title = _("System Device!");
-							string message = _("System devices cannot be unmounted or locked");
-							gtk_messagebox(title, message, null, true);
-							return;
+							is_system = true;
+							break;
+						default:
+							if (dev.fstype == "swap"){
+								is_system = true;
+							}
+							break;
 						}
+					}
+
+					if (is_system){
+						string title = _("System Device!");
+						string message = _("System devices cannot be unmounted");
+						gtk_messagebox(title, message, null, true);
+						return;
 					}
 					
 					// unmount if mounted
