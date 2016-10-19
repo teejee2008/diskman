@@ -226,6 +226,51 @@ public class Device : GLib.Object{
 		return s.strip();
 	}
 
+
+	public string description_usage(){
+
+		string s = "";
+
+		if (type == "disk"){
+			if (vendor.length > 0){
+				s += " " + vendor;
+			}
+			if (model.length > 0){
+				s += " " + model;
+			}
+			if (size_bytes > 0) {
+				if (s.strip().length == 0){
+					s += "%s Device".printf(format_file_size(size_bytes, false, "", true, 0));
+				}
+				else{
+					s += " (%s)".printf(format_file_size(size_bytes, false, "", true, 0));
+				}
+			}
+		}
+		else if ((type == "loop") && has_children()){
+			s += _("Loop Device");
+			s += (label.length > 0) ? " - " + label + "": "";
+		}
+		else{
+			s += short_name_with_parent;
+			s += (label.length > 0) ? " (" + label + ")": "";
+			//s += (fstype.length > 0) ? " ~ " + fstype : "";
+
+			if (used_bytes > 0) {
+				s += " ~ %s/%s (%.0f %%)".printf(
+					format_file_size(used_bytes, false, "", true, 0),
+					format_file_size(size_bytes, false, "", true, 0),
+					((used_bytes * 100.0) / size_bytes));
+			}
+			else{
+				s += " ~ %s".printf(
+					format_file_size(size_bytes, false, "", true, 0));
+			}
+		}
+
+		return s.strip();
+	}
+
 	public string description_full_free(){
 		string s = "";
 
@@ -265,14 +310,14 @@ public class Device : GLib.Object{
 		return s;
 	}
 
-	public string description_usage(){
+	/*public string description_usage(){
 		if (used.length > 0){
 			return used + " / " + size + " used (" + used_percent + ")";
 		}
 		else{
 			return "";
 		}
-	}
+	}*/
 
 	public string description_free(){
 		if (used.length > 0){

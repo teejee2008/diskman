@@ -83,7 +83,7 @@ namespace TeeJee.ProcessHelper{
 		 * std_out, std_err can be null. Output will be written to terminal if null.
 		 * */
 
-		string sh_file = save_bash_script_temp(script, null, true, supress_errors);
+		string sh_file = save_bash_script_temp(script, null, true, supress_errors, run_as_admin);
 
 		try {
 			string[] argv = new string[1];

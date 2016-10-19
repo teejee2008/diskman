@@ -14,8 +14,8 @@ using TeeJee.Misc;
 
 using AppIndicator;
 
-public class DiskIndicator
-{
+public class DiskIndicator: GLib.Object{
+	
 	protected Gee.ArrayList<Device> device_list;
     protected Indicator indicator;
     protected string icon;
@@ -49,7 +49,7 @@ public class DiskIndicator
 		});
 
 		item.activate();
-		
+
 		// eject -------------------------------------
 
         /*
@@ -80,7 +80,7 @@ public class DiskIndicator
 		});
 
 		item.activate();
-        
+
 		// unmount -------------------------------------
 		
         item = new Gtk.MenuItem.with_label(_("Unmount"));
@@ -109,7 +109,7 @@ public class DiskIndicator
 		});
 
 		item.activate();
-		
+
 		// unlock -------------------------------------
 		
         item = new Gtk.MenuItem.with_label(_("Unlock"));
@@ -122,7 +122,23 @@ public class DiskIndicator
 		});
 
 		item.activate();
+
+		// usage -------------------------------------
+        
+		separator = new Gtk.SeparatorMenuItem ();
+		menu.add (separator);
 		
+        item = new Gtk.MenuItem.with_label("Usage");
+        menu.append(item);
+		var item_usage = item;
+		
+        item.activate.connect(()=>{
+			var submenu = get_menu("usage");
+			item_usage.set_submenu(submenu);
+		});
+
+		item.activate();
+
 		// about -------------------------------------
 		
         separator = new Gtk.SeparatorMenuItem ();
@@ -161,13 +177,13 @@ public class DiskIndicator
 	private void refresh_device_list_if_stale(){
 		var period = (new DateTime.now_local()).add_seconds(-10);
 		if ((device_list == null) || (last_refresh_date == null) || (last_refresh_date.compare(period) < 0)){
-			device_list = Device.get_block_devices_using_lsblk();
+			device_list = Device.get_filesystems();
 			last_refresh_date = new DateTime.now_local();
 		}
 	}
 
 	private void refresh_device_list(){
-		device_list = Device.get_block_devices_using_lsblk();
+		device_list = Device.get_filesystems();
 		last_refresh_date = new DateTime.now_local();
 	}
 	
@@ -192,6 +208,7 @@ public class DiskIndicator
 			
 			switch(action){
 			case "open":
+			case "usage":
 				bool show = (dev.type == "disk") || (dev.type == "loop")  || !dev.is_encrypted_partition() || !dev.has_children(); 
 				if (!show){
 					continue;
@@ -232,21 +249,60 @@ public class DiskIndicator
 			}
 			
 			Gtk.Image icon = null;
-			
-			if ((dev.type == "crypt") && (dev.pkname.length > 0)){
-				icon = get_shared_icon("","unlocked.png",16);
-			}
-			else if (dev.fstype.contains("luks")){
-				icon = get_shared_icon("","locked.png",16);
-			}
-			else if (dev.fstype.contains("iso9660") || (dev.type == "loop")){
-				icon = get_shared_icon("media-cdrom","media-cdrom.png",16);
-			}
-			else{
-				icon = get_shared_icon("","drive-harddisk.svg",16);
-			}
 
-			var name = dev.description_simple();
+			//if (action != "usage"){
+				if ((dev.type == "crypt") && (dev.pkname.length > 0)){
+					icon = get_shared_icon("","unlocked.png",16);
+				}
+				else if (dev.fstype.contains("luks")){
+					icon = get_shared_icon("","locked.png",16);
+				}
+				else if (dev.fstype.contains("iso9660") || (dev.type == "loop")){
+					icon = get_shared_icon("media-cdrom","media-cdrom.png",16);
+				}
+				else{
+					icon = get_shared_icon("","drive-harddisk.svg",16);
+				}
+			//}
+
+			var name = "";
+
+			switch(action){
+			case "usage":
+				if ((dev.type == "disk") || ((dev.type == "loop") && dev.has_children())){
+					name += "%s".printf(dev.description_simple());
+					break;
+				}
+			
+				
+				name += "%s".printf(dev.description_usage());
+
+				if ((dev.used_bytes > 0) && (dev.size_bytes > 0)){
+					double usage_percent = (dev.used_bytes * 10.0) / dev.size_bytes;
+					int used_count = (int) usage_percent;
+					int free_count = 10 - used_count;
+
+					name += "  ";
+					for(int j = 0; j < used_count; j++){
+						name += "▮";
+					}
+					for(int j = 0; j < free_count; j++){
+						name += "▯";
+					}
+				}
+				else{
+					name += "  ";
+					for(int j = 0; j < 10; j++){
+						//name += "░";░ ▒ ▓ ⬜ ⬛ ▯ ▮
+					}
+				}
+				
+				break;
+				
+			default:
+				name += "%s".printf(dev.description_simple());
+				break;
+			}
 
 			if ((dev.type != "disk") && ((action == "open") || (action == "unmount"))){
 				if (dev.mount_points.size > 0){
@@ -299,6 +355,7 @@ public class DiskIndicator
 				}
 				break;
 			case "open":
+			case "usage":
 			case "mount":
 			case "unmount":
 			case "lock":
@@ -539,6 +596,14 @@ public class DiskIndicator
 					
 				});
 				break;
+
+			case "usage":
+			
+				item.activate.connect(() => {
+					open_baobab(dev);
+				});
+				
+				break;
 			}
 		}
 
@@ -648,6 +713,27 @@ public class DiskIndicator
 
 		var dev_unlocked_new = dev_luks.query_changes();
 		return (dev_unlocked_new == null);
+	}
+
+	private void open_baobab(Device dev){
+
+		if ((dev.used_bytes > 0) && (dev.mount_points.size > 0)){
+			string cmd = "baobab '%s'\n".printf(dev.mount_points[0].mount_point);
+			string std_out, std_err;
+			exec_script_sync(cmd, out std_out, out std_err, false, true);
+		}
+		
+		/*if ((dev.used_bytes > 0) && (dev.mount_points.size > 0)){
+			
+			App.init_daemon();
+
+			while (!App.daemon.is_ready){
+				sleep(100);
+			}
+
+			string cmd = "open_baobab|%s".printf(dev.mount_points[0].mount_point);
+			App.daemon.send_command(cmd);
+		}*/
 	}
 
 	public void btn_donate_clicked(){

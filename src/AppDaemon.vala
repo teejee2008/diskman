@@ -178,6 +178,9 @@ public class Main : GLib.Object{
 			case "automount_off":
 				set_udev_rule_for_usb_automount(false);
 				break;
+			//case "open_baobab":
+			//	open_baobab(args);
+			//	break;
 			case "exit":
 				exit(0);
 				break;
@@ -216,6 +219,22 @@ public class Main : GLib.Object{
 		}
 
 		var cmd = "cryptsetup luksClose -v '%s'\n".printf(device);
+		log_debug(cmd);
+
+		string std_out, std_err;
+		int status = exec_script_sync(cmd, out std_out, out std_err);
+
+		print_output(status, std_out, std_err);
+	}
+
+	private void open_baobab(string[] args){
+		string path = args[2];
+		if (!dir_exists(path)){
+			stdout.printf("E:unknown path");
+			stdout.flush();
+		}
+
+		var cmd = "baobab '%s'\n".printf(path);
 		log_debug(cmd);
 
 		string std_out, std_err;
