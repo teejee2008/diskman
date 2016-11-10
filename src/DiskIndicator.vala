@@ -208,7 +208,6 @@ public class DiskIndicator: GLib.Object{
 			
 			switch(action){
 			case "open":
-			case "usage":
 				bool show = (dev.type == "disk") || (dev.type == "loop")  || !dev.is_encrypted_partition() || !dev.has_children(); 
 				if (!show){
 					continue;
@@ -227,6 +226,7 @@ public class DiskIndicator: GLib.Object{
 				}
 				break;
 			case "unmount":
+			case "usage":
 				bool show = (dev.type == "disk")
 					|| ((dev.type == "loop") && dev.has_children())
 					|| (dev.mount_points.size > 0); 
@@ -274,7 +274,6 @@ public class DiskIndicator: GLib.Object{
 					break;
 				}
 			
-				
 				name += "%s".printf(dev.description_usage());
 
 				if ((dev.used_bytes > 0) && (dev.size_bytes > 0)){
