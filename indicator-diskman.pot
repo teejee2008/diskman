@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-diskman 1.6\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2016-11-07 22:35+0530\n"
+"POT-Creation-Date: 2017-01-08 13:49+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: DiskIndicator.vala:188
+msgid "About"
+msgstr ""
 
 #: Main.vala:177
 msgid "Admin Access Required"
@@ -33,11 +37,11 @@ msgstr ""
 msgid "Commands listed below are not available on this system"
 msgstr ""
 
-#: DiskIndicator.vala:772
+#: DiskIndicator.vala:829
 msgid "Disk Indicator for Linux"
 msgstr ""
 
-#: DiskIndicator.vala:389
+#: DiskIndicator.vala:433
 #, c-format
 msgid "Disk can be safely removed"
 msgstr ""
@@ -46,29 +50,45 @@ msgstr ""
 msgid "Distribution"
 msgstr ""
 
-#: DiskIndicator.vala:673
+#: DiskIndicator.vala:197
+msgid "Donate"
+msgstr ""
+
+#: DiskIndicator.vala:730
 msgid "Encrypted Device"
 msgstr ""
 
-#: DiskIndicator.vala:674
+#: DiskIndicator.vala:731
 #, c-format
 msgid "Enter passphrase to unlock '%s'"
 msgstr ""
 
-#: DiskIndicator.vala:564
+#: DiskIndicator.vala:206
+msgid "Exit"
+msgstr ""
+
+#: DiskIndicator.vala:608
 msgid "Failed to lock"
 msgstr ""
 
-#: DiskIndicator.vala:588
+#: DiskIndicator.vala:632
 msgid "Failed to unlock"
 msgstr ""
 
-#: DiskIndicator.vala:457
+#: DiskIndicator.vala:169
+msgid "ISO"
+msgstr ""
+
+#: DiskIndicator.vala:501
 #, c-format
 msgid "Is Mounted"
 msgstr ""
 
-#: DiskIndicator.vala:559
+#: DiskIndicator.vala:114
+msgid "Lock"
+msgstr ""
+
+#: DiskIndicator.vala:603
 #, c-format
 msgid "Locked"
 msgstr ""
@@ -77,31 +97,35 @@ msgstr ""
 msgid "Missing Dependencies"
 msgstr ""
 
-#: DiskIndicator.vala:73
+#: DiskIndicator.vala:77
 msgid "Mount"
 msgstr ""
 
-#: DiskIndicator.vala:616
+#: DiskIndicator.vala:657
 msgid "Mount ISO..."
 msgstr ""
 
-#: DiskIndicator.vala:450
+#: DiskIndicator.vala:494
 #, c-format
 msgid "Mounted"
 msgstr ""
 
-#: DiskIndicator.vala:636
+#: DiskIndicator.vala:678
 #, c-format
 msgid "Mounted ISO File"
 msgstr ""
 
-#: DiskIndicator.vala:506
+#: DiskIndicator.vala:550
 #, c-format
 msgid "Not mounted"
 msgstr ""
 
 #: Main.vala:393
 msgid "Older log files removed"
+msgstr ""
+
+#: DiskIndicator.vala:42
+msgid "Open"
 msgstr ""
 
 #: Main.vala:203
@@ -121,19 +145,19 @@ msgstr ""
 msgid "Session log file"
 msgstr ""
 
-#: DiskIndicator.vala:400
+#: DiskIndicator.vala:444
 msgid "Swap Device!"
 msgstr ""
 
-#: DiskIndicator.vala:401
+#: DiskIndicator.vala:445
 msgid "Swap devices cannot be opened in file manager"
 msgstr ""
 
-#: DiskIndicator.vala:487 DiskIndicator.vala:536
+#: DiskIndicator.vala:531 DiskIndicator.vala:580
 msgid "System Device!"
 msgstr ""
 
-#: DiskIndicator.vala:488 DiskIndicator.vala:537
+#: DiskIndicator.vala:532 DiskIndicator.vala:581
 msgid "System devices cannot be unmounted"
 msgstr ""
 
@@ -141,20 +165,24 @@ msgstr ""
 msgid "This application requires admin access to perform some actions."
 msgstr ""
 
-#: DiskIndicator.vala:115
+#: DiskIndicator.vala:131
 msgid "Unlock"
 msgstr ""
 
-#: DiskIndicator.vala:583
+#: DiskIndicator.vala:627
 #, c-format
 msgid "Unlocked"
 msgstr ""
 
-#: DiskIndicator.vala:86
+#: DiskIndicator.vala:94
 msgid "Unmount"
 msgstr ""
 
-#: DiskIndicator.vala:388 DiskIndicator.vala:500
+#: DiskIndicator.vala:432 DiskIndicator.vala:544
 #, c-format
 msgid "Unmounted"
+msgstr ""
+
+#: DiskIndicator.vala:150
+msgid "Usage"
 msgstr ""

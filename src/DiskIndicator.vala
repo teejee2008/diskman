@@ -39,10 +39,14 @@ public class DiskIndicator: GLib.Object{
 
 		// open -------------------------------------
 		
-		var item = new Gtk.MenuItem.with_label("Open");
+		var item = new Gtk.ImageMenuItem.with_label(_("Open"));
         menu.append(item);
         var item_open = item;
 
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("inode-directory","locked.png",16));
+		item.set_reserve_indicator(false);
+		
 		item.activate.connect(()=>{
 			var submenu = get_menu("open");
 			item_open.set_submenu(submenu);
@@ -70,9 +74,13 @@ public class DiskIndicator: GLib.Object{
         var separator = new Gtk.SeparatorMenuItem ();
 		menu.add (separator);
 
-        item = new Gtk.MenuItem.with_label(_("Mount"));
+        item = new Gtk.ImageMenuItem.with_label(_("Mount"));
         menu.append(item);
         var item_mount = item;
+
+        item.always_show_image = true;
+		item.set_image(get_shared_icon("","drive-harddisk.svg",16));
+		item.set_reserve_indicator(false);
 
         item.activate.connect(()=>{
 			var submenu = get_menu("mount");
@@ -83,9 +91,13 @@ public class DiskIndicator: GLib.Object{
 
 		// unmount -------------------------------------
 		
-        item = new Gtk.MenuItem.with_label(_("Unmount"));
+        item = new Gtk.ImageMenuItem.with_label(_("Unmount"));
         menu.append(item);
         var item_unmount = item;
+
+        item.always_show_image = true;
+		item.set_image(get_shared_icon("media-eject","",16));
+		item.set_reserve_indicator(false);
 
 		item.activate.connect(()=>{
 			var submenu = get_menu("unmount");
@@ -99,9 +111,13 @@ public class DiskIndicator: GLib.Object{
 		separator = new Gtk.SeparatorMenuItem ();
 		menu.add (separator);
 		
-        item = new Gtk.MenuItem.with_label("Lock");
+        item = new Gtk.ImageMenuItem.with_label(_("Lock"));
         menu.append(item);
 		var item_lock = item;
+
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("","locked.png",16));
+		item.set_reserve_indicator(false);
 		
         item.activate.connect(()=>{
 			var submenu = get_menu("lock");
@@ -112,9 +128,12 @@ public class DiskIndicator: GLib.Object{
 
 		// unlock -------------------------------------
 		
-        item = new Gtk.MenuItem.with_label(_("Unlock"));
+        item = new Gtk.ImageMenuItem.with_label(_("Unlock"));
         menu.append(item);
 		var item_unlock = item;
+
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("","unlocked.png",16));
 		
 		item.activate.connect(()=>{
 			var submenu = get_menu("unlock");
@@ -122,19 +141,41 @@ public class DiskIndicator: GLib.Object{
 		});
 
 		item.activate();
-
+		
 		// usage -------------------------------------
         
 		separator = new Gtk.SeparatorMenuItem ();
 		menu.add (separator);
 		
-        item = new Gtk.MenuItem.with_label("Usage");
+        item = new Gtk.ImageMenuItem.with_label(_("Usage"));
         menu.append(item);
 		var item_usage = item;
-		
+
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("disk-usage-analyzer","disk-usage-analyzer.svg",16));
+
         item.activate.connect(()=>{
 			var submenu = get_menu("usage");
 			item_usage.set_submenu(submenu);
+		});
+
+		item.activate();
+
+		// iso -------------------------------------
+        
+		separator = new Gtk.SeparatorMenuItem ();
+		menu.add (separator);
+		
+        item = new Gtk.ImageMenuItem.with_label(_("ISO"));
+        menu.append(item);
+		var item_iso = item;
+
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("media-optical","media-optical.png",16));
+
+        item.activate.connect(()=>{
+			var submenu = get_menu("iso");
+			item_iso.set_submenu(submenu);
 		});
 
 		item.activate();
@@ -144,7 +185,7 @@ public class DiskIndicator: GLib.Object{
         separator = new Gtk.SeparatorMenuItem ();
 		menu.add (separator);
 
-		item = new Gtk.MenuItem.with_label("About");
+		item = new Gtk.ImageMenuItem.with_label(_("About"));
         menu.append(item);
 
         item.activate.connect(() => {
@@ -153,7 +194,7 @@ public class DiskIndicator: GLib.Object{
 
         // donate -------------------------------------
 
-        item = new Gtk.MenuItem.with_label("Donate");
+        item = new Gtk.ImageMenuItem.with_label(_("Donate"));
         menu.append(item);
 
         item.activate.connect(() => {
@@ -162,7 +203,7 @@ public class DiskIndicator: GLib.Object{
 
         // exit -------------------------------------
         
-		item = new Gtk.MenuItem.with_label("Exit");
+		item = new Gtk.ImageMenuItem.with_label(_("Exit"));
         menu.append(item);
 
         item.activate.connect(() => {
@@ -177,13 +218,13 @@ public class DiskIndicator: GLib.Object{
 	private void refresh_device_list_if_stale(){
 		var period = (new DateTime.now_local()).add_seconds(-10);
 		if ((device_list == null) || (last_refresh_date == null) || (last_refresh_date.compare(period) < 0)){
-			device_list = Device.get_filesystems();
+			device_list = Device.get_block_devices();
 			last_refresh_date = new DateTime.now_local();
 		}
 	}
 
 	private void refresh_device_list(){
-		device_list = Device.get_filesystems();
+		device_list = Device.get_block_devices();
 		last_refresh_date = new DateTime.now_local();
 	}
 	
@@ -246,6 +287,9 @@ public class DiskIndicator: GLib.Object{
 					continue;
 				}
 				break;
+
+			case "iso":
+				continue;
 			}
 			
 			Gtk.Image icon = null;
@@ -258,7 +302,7 @@ public class DiskIndicator: GLib.Object{
 					icon = get_shared_icon("","locked.png",16);
 				}
 				else if (dev.fstype.contains("iso9660") || (dev.type == "loop")){
-					icon = get_shared_icon("media-cdrom","media-cdrom.png",16);
+					icon = get_shared_icon("media-optical","media-optical.png",16);
 				}
 				else{
 					icon = get_shared_icon("","drive-harddisk.svg",16);
@@ -608,15 +652,12 @@ public class DiskIndicator: GLib.Object{
 
 		// mount iso  -------------------------------------
 
-		if (action == "mount"){
-			
-			var separator = new Gtk.SeparatorMenuItem ();
-			menu.add (separator);
+		if (action == "iso"){
 			
 			var item = new Gtk.ImageMenuItem.with_label (_("Mount ISO..."));
 			item.set_reserve_indicator(false);
 			menu.append(item);
-			
+
 			item.always_show_image = true;
 			var icon = get_shared_icon("media-optical","media-optical.png",16);
 			item.set_image(icon);
@@ -629,21 +670,37 @@ public class DiskIndicator: GLib.Object{
 					return;
 				}
 
-				string loop_name = "";
-				bool ok = Device.automount_udisks_iso(iso_file, out loop_name, dummy_window);
+				var loop_dev = Device.automount_udisks_iso(iso_file, dummy_window);
 				
-				if (ok){
+				if (loop_dev != null){
+
+					// notify
 					string title = "%s".printf(_("Mounted ISO File"));
-					string msg = "%s".printf(loop_name);
+					string msg = "%s".printf(loop_dev.device);
 					OSDNotify.notify_send(title, msg, 2000, "normal", "info");
-				}
-				else{
 
-
+					if (loop_dev.has_children()){
+						// get first iso9660 partition
+						var list = Device.get_block_devices_using_lsblk();
+						foreach(var dev in list){
+							if ((dev.pkname == loop_dev.device.replace("/dev/","")) && (dev.fstype == "iso9660")){
+								loop_dev = dev;
+								break;
+							}
+						}
+					}
+					
+					// browse
+					if (loop_dev != null){
+						var mps = Device.get_device_mount_points(loop_dev.device);
+						if (mps.size > 0){
+							var mp = mps[0];
+							exo_open_folder(mp.mount_point);
+						}
+					}
 				}
 			});
 		}
-        
 
 		menu.show_all();
 		
