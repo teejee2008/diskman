@@ -11,7 +11,7 @@ app_fullname=Disk Manager Indicator
 
 all:
 	#build binaries
-	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/${app_name}/libs ${define_symbols} --thread DiskIndicator.vala Main.vala MainWindow.vala Utility/*.vala App/*.vala -o ${app_name} --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg libxml-2.0 --pkg appindicator3-0.1
+	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/${app_name}/libs ${define_symbols} --thread DiskIndicator.vala Main.vala MainWindow.vala SettingsWindow.vala Utility/*.vala App/*.vala -o ${app_name} --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg libxml-2.0 --pkg appindicator3-0.1
 	
 	#helper daemon
 	valac -X -D'GETTEXT_PACKAGE="${app_name}"' --Xcc="-lm" -X -Wl,-rpath,/usr/share/${app_name}/libs ${define_symbols} --thread AppDaemon.vala Utility/*.vala App/*.vala -o ${app_name}-daemon --pkg glib-2.0 --pkg gio-unix-2.0 --pkg posix --pkg gtk+-3.0 --pkg gee-0.8 --pkg json-glib-1.0 --pkg libxml-2.0

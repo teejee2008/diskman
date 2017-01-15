@@ -23,15 +23,20 @@ public class DiskIndicator: GLib.Object{
     protected DateTime last_refresh_date = null;
     
     public DiskIndicator(){
+
+		App.disk_indicator = this;
 		
         this.name = "Disk Manager";
         this.icon = "disks";
         this.indicator = new Indicator(
 			"indicator_diskman", icon, IndicatorCategory.APPLICATION_STATUS);
+
+		//indicator.set_status(IndicatorStatus.ACTIVE);
+        
               
         indicator.set_status(IndicatorStatus.ACTIVE);
-
-		indicator.icon_theme_path = "/usr/share/%s/images".printf(AppShortName);
+		
+		refresh_tray_icon();
 		
 		refresh_device_list();
 		
@@ -180,6 +185,24 @@ public class DiskIndicator: GLib.Object{
 
 		item.activate();
 
+		// settings -------------------------------------
+        
+		separator = new Gtk.SeparatorMenuItem ();
+		menu.add (separator);
+		
+        item = new Gtk.ImageMenuItem.with_label(_("Settings"));
+        menu.append(item);
+		var item_settings = item;
+
+		item.always_show_image = true;
+		item.set_image(get_shared_icon("preferences-system","settings.png",16));
+
+        item.activate.connect(()=>{
+			var dlg = new SettingsWindow(null);
+		});
+
+		//item.activate();
+
 		// about -------------------------------------
 		
         separator = new Gtk.SeparatorMenuItem ();
@@ -213,6 +236,19 @@ public class DiskIndicator: GLib.Object{
        
         indicator.set_menu(menu);
 		menu.show_all();
+	}
+
+	public void refresh_tray_icon(){
+		if (App.use_custom_tray_icon && file_exists(App.custom_tray_icon_path)){
+			log_msg("Setting custom tray icon");
+			indicator.set_icon_theme_path(file_parent(App.custom_tray_icon_path));
+			indicator.set_icon(file_basename(App.custom_tray_icon_path).replace(".png","").replace(".svg","").replace(".jpg","").replace(".jpeg",""));
+		}
+		else{
+			this.icon = "disks";
+			indicator.set_icon_theme_path("/usr/share/%s/images".printf(AppShortName));
+			indicator.set_icon("disks");
+		}
 	}
 
 	private void refresh_device_list_if_stale(){

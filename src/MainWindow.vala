@@ -37,7 +37,7 @@ class MainWindow : Gtk.Window{
 	private Gtk.Box vbox_main;
 
 	//timers
-	private uint tmr_init;
+	private uint tmr_init = 0;
 	private int def_width = 650;
 	private int def_height = 500;
 
@@ -57,7 +57,9 @@ class MainWindow : Gtk.Window{
         vbox_main.margin = 0;
         add (vbox_main);
 
-		tmr_init = Timeout.add(100, init_delayed);
+        //show_all();
+
+		//tmr_init = Timeout.add(100, init_delayed);
 
 		log_debug("MainWindow(): exit");
     }

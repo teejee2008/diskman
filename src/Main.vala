@@ -49,8 +49,9 @@ extern void exit(int exit_code);
 
 public class Main : GLib.Object{
 
-	public string share_folder = "";
-	public string app_conf_path = "";
+	public string APP_CONFIG_FILE = "";
+	public string user_login = "";
+	public string user_home = "";
 	public string app_mode = "";
 	public bool first_run = false;
 
@@ -59,9 +60,12 @@ public class Main : GLib.Object{
 	public AppLock app_lock = null;
 	public bool thread_running = false;
 	public bool thread_success = false;
-
+	public bool use_custom_tray_icon = false;
+	public string custom_tray_icon_path = "";
+	
 	public Daemon daemon = null;
-
+	public DiskIndicator disk_indicator;
+	
 	StartupEntry startup_entry;
 	
 	public static int main (string[] args) {
@@ -134,7 +138,7 @@ public class Main : GLib.Object{
 
 		init_members();
 
-		//load_app_config();
+		load_app_config();
 
 		startup_entry = new StartupEntry(get_user_name(), AppShortName, "startup", 2);
 		startup_entry.create("indicator-diskman");
@@ -250,8 +254,12 @@ public class Main : GLib.Object{
 	}
 
 	public void init_members(){
-		this.share_folder = "/usr/share";
-		this.app_conf_path = "/etc/indicator-diskman.json";
+		// user info
+		user_login = get_user_name();
+		user_home = get_user_home(user_login);
+		
+		// app config file
+		APP_CONFIG_FILE = user_home + "/.config/%s.json".printf(AppShortName);
 	}
 	
 	public void log_sysinfo(){
@@ -285,8 +293,9 @@ public class Main : GLib.Object{
 		
 		var config = new Json.Object();
 
-		config.set_string_member("use_snapshot_path_user", "bool.to_string()");
-			
+		config.set_string_member("use_custom_tray_icon", use_custom_tray_icon.to_string());
+		config.set_string_member("custom_tray_icon_path", custom_tray_icon_path);
+		
 		/*
 		Json.Array arr = new Json.Array();
 		foreach(string path in exclude_list_user){
@@ -303,13 +312,13 @@ public class Main : GLib.Object{
 		json.set_root(node);
 
 		try{
-			json.to_file(this.app_conf_path);
+			json.to_file(APP_CONFIG_FILE);
 		} catch (Error e) {
 	        log_error (e.message);
 	    }
 
 	    if ((app_mode == "")||(LOG_DEBUG)){
-			log_msg(_("App config saved") + ": '%s'".printf(this.app_conf_path));
+			log_msg(_("App config saved") + ": '%s'".printf(APP_CONFIG_FILE));
 		}
 	}
 
@@ -317,7 +326,7 @@ public class Main : GLib.Object{
 
 		log_debug("load_app_config()");
 		
-		var f = File.new_for_path(this.app_conf_path);
+		var f = File.new_for_path(APP_CONFIG_FILE);
 		if (!f.query_exists()) {
 			first_run = true;
 			log_debug("first run mode: config file not found");
@@ -326,13 +335,17 @@ public class Main : GLib.Object{
 
 		var parser = new Json.Parser();
         try{
-			parser.load_from_file(this.app_conf_path);
+			parser.load_from_file(APP_CONFIG_FILE);
 		} catch (Error e) {
 	        log_error (e.message);
 	    }
         var node = parser.get_root();
         var config = node.get_object();
 
+
+		use_custom_tray_icon = json_get_bool(config,"use_custom_tray_icon", use_custom_tray_icon);
+		custom_tray_icon_path = json_get_string(config,"custom_tray_icon_path", custom_tray_icon_path);
+		
 		/*
 		backup_uuid = json_get_string(config,"backup_device_uuid", backup_uuid);
 		this.schedule_monthly = json_get_bool(config,"schedule_monthly",schedule_monthly);
@@ -348,7 +361,7 @@ public class Main : GLib.Object{
 		}*/
 
 		if ((app_mode == "")||(LOG_DEBUG)){
-			log_msg(_("App config loaded") + ": '%s'".printf(this.app_conf_path));
+			log_msg(_("App config loaded") + ": '%s'".printf(APP_CONFIG_FILE));
 		}
 	}
 
@@ -409,6 +422,8 @@ public class Main : GLib.Object{
 		if (app_lock != null){
 			app_lock.remove();
 		}
+
+		save_app_config();
 
 		Gtk.main_quit ();
 	}
