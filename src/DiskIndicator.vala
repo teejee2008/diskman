@@ -701,7 +701,14 @@ public class DiskIndicator: GLib.Object{
 
 			item.activate.connect(() => {
 
-				var selected_files = gtk_select_files(dummy_window);
+				var filters = new Gee.ArrayList<Gtk.FileFilter>();
+				var filter = create_file_filter("All Files", { "*" });
+				filters.add(filter);
+				filter = create_file_filter("ISO Image File (*.iso)", { "*.iso" });
+				filters.add(filter);
+				var default_filter = filter;
+
+				var selected_files = gtk_select_files(dummy_window, true, false, filters, default_filter);
 				string iso_file = (selected_files.size > 0) ? selected_files[0] : "";
 				if ((iso_file.length == 0) || !file_exists(iso_file)){
 					return;

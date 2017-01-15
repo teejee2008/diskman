@@ -451,33 +451,56 @@ namespace TeeJee.GtkHelper{
 	// file chooser ----------------
 
 	public Gee.ArrayList<string> gtk_select_files(Gtk.Window? parent_window,
-		bool select_files = true, bool select_multiple = false){
+		bool select_files = true, bool select_multiple = false, Gee.ArrayList<Gtk.FileFilter> filters = null, Gtk.FileFilter? default_filter = null){
+
+
+		/* Example:
 		
-		Gtk.FileChooserDialog dlg = null;
+		var filters = new Gee.ArrayList<Gtk.FileFilter>();
+		var filter = create_file_filter("All Files", { "*" });
+		filters.add(filter);
+		filter = create_file_filter("ISO Image File (*.iso)", { "*.iso" });
+		filters.add(filter);
+		var default_filter = filter;
+
+		var selected_files = gtk_select_files(dummy_window, true, false, filters, default_filter);
+		string iso_file = (selected_files.size > 0) ? selected_files[0] : "";
+		*/
+		
+		Gtk.FileChooserDialog chooser = null;
 
 		if (select_files){
-			dlg = new Gtk.FileChooserDialog(_("Add File(s)"), parent_window, Gtk.FileChooserAction.OPEN,
+			chooser = new Gtk.FileChooserDialog(_("Add File(s)"), parent_window, Gtk.FileChooserAction.OPEN,
 					"gtk-cancel", Gtk.ResponseType.CANCEL, "gtk-open", Gtk.ResponseType.ACCEPT);
 		}
 		else{
-			dlg = new Gtk.FileChooserDialog(_("Add Folder(s)"), parent_window, Gtk.FileChooserAction.SELECT_FOLDER,
+			chooser = new Gtk.FileChooserDialog(_("Add Folder(s)"), parent_window, Gtk.FileChooserAction.SELECT_FOLDER,
 					"gtk-cancel", Gtk.ResponseType.CANCEL, "gtk-open", Gtk.ResponseType.ACCEPT);
 		}
 
-		dlg.local_only = true;
- 		dlg.set_modal (true);
- 		dlg.set_select_multiple (select_multiple);
+		chooser.local_only = true;
+ 		chooser.set_modal (true);
+ 		chooser.set_select_multiple (select_multiple);
+
+		if (filters != null){
+			foreach(var filter in filters){
+				chooser.add_filter(filter);
+			}
+			if (default_filter != null){
+				chooser.filter = default_filter;
+			}
+		}
 
 		var list = new Gee.ArrayList<string>();
 		
- 		if (dlg.run() == Gtk.ResponseType.ACCEPT){
+ 		if (chooser.run() == Gtk.ResponseType.ACCEPT){
 			//get file list
-			foreach (string item_path in dlg.get_filenames()){
+			foreach (string item_path in chooser.get_filenames()){
 				list.add(item_path);
 			}
 	 	}
 
-		dlg.close();
+		chooser.close();
 		//dlg.destroy();
 		gtk_do_events();
 

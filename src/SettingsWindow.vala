@@ -152,6 +152,7 @@ public class SettingsWindow : Gtk.Window {
 			App.use_custom_tray_icon = chk_custom_icon.active;
 			txt_tray_icon_path.sensitive = App.use_custom_tray_icon;
 			btn_browse_tray_icon.sensitive = App.use_custom_tray_icon;
+			App.disk_indicator.refresh_tray_icon();
 		});
 	}
 
