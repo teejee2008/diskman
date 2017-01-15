@@ -218,13 +218,13 @@ public class DiskIndicator: GLib.Object{
 	private void refresh_device_list_if_stale(){
 		var period = (new DateTime.now_local()).add_seconds(-10);
 		if ((device_list == null) || (last_refresh_date == null) || (last_refresh_date.compare(period) < 0)){
-			device_list = Device.get_block_devices();
+			device_list = Device.get_block_devices(true);
 			last_refresh_date = new DateTime.now_local();
 		}
 	}
 
 	private void refresh_device_list(){
-		device_list = Device.get_block_devices();
+		device_list = Device.get_block_devices(true);
 		last_refresh_date = new DateTime.now_local();
 	}
 	
@@ -313,12 +313,13 @@ public class DiskIndicator: GLib.Object{
 
 			switch(action){
 			case "usage":
+
 				if ((dev.type == "disk") || ((dev.type == "loop") && dev.has_children())){
 					name += "%s".printf(dev.description_simple());
 					break;
 				}
 			
-				name += "%s".printf(dev.description_usage());
+				name += "%s ~ %s".printf(dev.short_name_with_parent, dev.description_usage());
 
 				if ((dev.used_bytes > 0) && (dev.size_bytes > 0)){
 					double usage_percent = (dev.used_bytes * 10.0) / dev.size_bytes;
