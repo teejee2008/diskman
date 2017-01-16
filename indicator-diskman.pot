@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: indicator-diskman 1.6\n"
 "Report-Msgid-Bugs-To: teejeetech@gmail.com\n"
-"POT-Creation-Date: 2017-01-15 19:18+0530\n"
+"POT-Creation-Date: 2017-01-15 20:59+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr ""
 msgid "App config saved"
 msgstr ""
 
-#: SettingsWindow.vala:197
+#: SettingsWindow.vala:201
 msgid "Close"
 msgstr ""
 
@@ -145,11 +145,11 @@ msgstr ""
 msgid "Running"
 msgstr ""
 
-#: SettingsWindow.vala:143
+#: SettingsWindow.vala:141
 msgid "Select"
 msgstr ""
 
-#: SettingsWindow.vala:145
+#: SettingsWindow.vala:143
 msgid "Select icon file"
 msgstr ""
 

@@ -129,10 +129,8 @@ public class SettingsWindow : Gtk.Window {
 
 		entry.changed.connect(() => {
 			var path = txt_tray_icon_path.text;
-			if (file_exists(path)){
-				App.custom_tray_icon_path = path;
-				App.disk_indicator.refresh_tray_icon();
-			}
+			App.custom_tray_icon_path = path;
+			App.disk_indicator.refresh_tray_icon();
 		});
 		
 		entry.icon_release.connect((p0, p1) => {
@@ -169,8 +167,14 @@ public class SettingsWindow : Gtk.Window {
 		);
 
 		chooser.select_multiple = false;
-		chooser.set_filename(App.custom_tray_icon_path);
 
+		if (file_exists(App.custom_tray_icon_path)){
+			chooser.set_current_folder(file_parent(App.custom_tray_icon_path));
+		}
+		else{
+			chooser.set_current_folder("/usr/share/icons/");
+		}
+		
 		if (chooser.run() == Gtk.ResponseType.ACCEPT) {
 			txt_tray_icon_path.text = chooser.get_filename();
 		}

@@ -1,9 +1,21 @@
 
-indicator-diskman (16.10) xenial; urgency=medium
+indicator-diskman (17.1) xenial; urgency=medium
 
-  * Initial release
+  * Add menu for disk usage
 
- -- Tony George <tony.george.kol@gmail.com>  Sat, 15 Oct 2016 10:00:00 +0530
+  * Moved Mount ISO option to ISO menu
+
+  * Added icons for all menu items
+
+  * Improved the mounting logic for Linux ISO images
+
+  * Open directory after mounting ISO
+
+  * Added Settings window and option to set tray icon
+
+  * Filter ISO images in the dialog for selecting ISO image for mounting
+
+ -- Tony George <tony.george.kol@gmail.com>  Sun, 15 Jan 2016 10:00:00 +0530
  
 
 indicator-diskman (16.10.1) xenial; urgency=medium

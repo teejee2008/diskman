@@ -38,14 +38,14 @@ using TeeJee.Misc;
 public Main App;
 public const string AppName = "Disk Indicator";
 public const string AppShortName = "indicator-diskman";
-public const string AppVersion = "16.10.1";
+public const string AppVersion = "17.1";
 public const string AppAuthor = "Tony George";
 public const string AppAuthorEmail = "teejeetech@gmail.com";
 
 const string GETTEXT_PACKAGE = "";
 const string LOCALE_DIR = "/usr/share/locale";
 
-extern void exit(int exit_code);
+extern void exit(int exit_code); 
 
 public class Main : GLib.Object{
 
