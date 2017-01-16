@@ -17,8 +17,8 @@ long_line_behaviour=1
 long_line_column=80
 
 [files]
-current_page=27
-FILE_NAME_0=1171;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Findicator-diskman%2Fsrc%2FMain.vala;0;4
+current_page=0
+FILE_NAME_0=1360;Vala;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Findicator-diskman%2Fsrc%2FMain.vala;0;4
 FILE_NAME_1=457;Make;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Findicator-diskman%2Fsrc%2Fmakefile;0;4
 FILE_NAME_2=302;None;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Findicator-diskman%2Fdebian%2Fchangelog;0;4
 FILE_NAME_3=179;Conf;0;EUTF-8;1;1;1;%2Fhome%2Fteejee%2Fprojects%2Flinux%2Findicator-diskman%2Fdebian%2Fcontrol;0;4

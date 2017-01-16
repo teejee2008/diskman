@@ -809,10 +809,8 @@ public class DiskIndicator: GLib.Object{
 		}
 
 		string cmd = "luks_lock|%s".printf(dev_luks.device);
-		App.daemon.send_command(cmd);
-
-		var dev_unlocked_new = dev_luks.query_changes();
-		return (dev_unlocked_new == null);
+		int status = App.daemon.send_command(cmd);
+		return (status == 0);
 	}
 
 	private void open_baobab(Device dev){

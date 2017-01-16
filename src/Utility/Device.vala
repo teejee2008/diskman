@@ -1167,12 +1167,14 @@ public class Device : GLib.Object{
 
 		var cmd = "udisksctl unmount -b '%s'".printf(dev_name_or_uuid);
 		log_debug(cmd);
-		int status = Posix.system(cmd);
+		string std_err, std_out;
+		int status = exec_sync(cmd, out std_out,  out std_err);
 
 		if (status != 0){
 			if (parent_window != null){
-				string msg = "Failed to unmount: %s".printf(dev_name_or_uuid);
-				gtk_messagebox("Error", msg, parent_window, true);
+				string title = "Error unmounting %s".printf(dev_name_or_uuid);
+				string msg = std_err;
+				gtk_messagebox(title, std_err, parent_window, true);
 			}
 		}
 		
