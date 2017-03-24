@@ -41,7 +41,6 @@ public class Device : GLib.Object{
 	public static double MiB = 1024 * KiB;
 	public static double GiB = 1024 * MiB;
 	
-	//GUdev.Device udev_device;
 	public string device = "";
 	public string name = "";
 	public string kname = "";

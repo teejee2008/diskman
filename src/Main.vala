@@ -140,7 +140,7 @@ public class Main : GLib.Object{
 
 		load_app_config();
 
-		startup_entry = new StartupEntry(get_user_name(), AppShortName, "startup", 2);
+		startup_entry = new StartupEntry(get_user_login(), AppShortName, "startup", 2);
 		startup_entry.create("indicator-diskman");
 		
 		log_debug("Main(): ok");
@@ -255,7 +255,7 @@ public class Main : GLib.Object{
 
 	public void init_members(){
 		// user info
-		user_login = get_user_name();
+		user_login = get_user_login();
 		user_home = get_user_home(user_login);
 		
 		// app config file

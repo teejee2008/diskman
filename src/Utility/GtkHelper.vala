@@ -11,7 +11,6 @@ namespace TeeJee.GtkHelper{
 
 	using Gtk;
 
-
 	// messages -----------
 	
 	public void show_err_log(Gtk.Window parent, bool disable_log = true){
@@ -99,7 +98,7 @@ namespace TeeJee.GtkHelper{
 		//txt_input
 		Gtk.Entry txt_input = new Gtk.Entry();
 		txt_input.margin_top = 3;
-		txt_input.set_visibility(false);
+		txt_input.set_visibility(!mask_password);
 
 		//create dialog
 		var dlg = new Gtk.Dialog.with_buttons(title, parent_win, DialogFlags.MODAL);
@@ -146,7 +145,17 @@ namespace TeeJee.GtkHelper{
 		}
 	}
 
-
+	public void wait_and_close_window(int milliseconds, Gtk.Window window){
+		gtk_do_events();
+		int millis = 0;
+		while(millis < milliseconds){
+			sleep(200);
+			millis += 200;
+			gtk_do_events();
+		}
+		window.destroy();
+	}
+	
 	// combo ---------
 	
 	public bool gtk_combobox_set_value (ComboBox combo, int index, string val){
@@ -451,7 +460,7 @@ namespace TeeJee.GtkHelper{
 	// file chooser ----------------
 
 	public Gee.ArrayList<string> gtk_select_files(Gtk.Window? parent_window,
-		bool select_files = true, bool select_multiple = false, Gee.ArrayList<Gtk.FileFilter> filters = null, Gtk.FileFilter? default_filter = null){
+		bool select_files = true, bool select_multiple = false, Gee.ArrayList<Gtk.FileFilter>? filters = null, Gtk.FileFilter? default_filter = null){
 
 
 		/* Example:

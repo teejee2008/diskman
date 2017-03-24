@@ -57,7 +57,7 @@ namespace TeeJee.System{
 	}
 
 	// dep: whoami
-	public string get_user_name(){
+	public string get_user_login(){
 		/*
 		Returns Login ID of current user.
 		If running as 'sudo' it will return Login ID of the actual user.
@@ -81,13 +81,13 @@ namespace TeeJee.System{
 	}
 
 	// dep: id
-	public int get_user_id(string user_name){
+	public int get_user_id(string user_login){
 		/*
 		Returns UID of specified user.
 		*/
 
 		int uid = -1;
-		string cmd = "id %s -u".printf(user_name);
+		string cmd = "id %s -u".printf(user_login);
 		string std_out, std_err;
 		exec_sync(cmd, out std_out, out std_err);
 		if ((std_out != null) && (std_out.length > 0)){
@@ -97,12 +97,18 @@ namespace TeeJee.System{
 		return uid;
 	}
 
-	public string get_user_home(string user_name){
-		if (user_name == "root"){
+	public string get_user_home(string custom_user_login = ""){
+		string user_login = get_user_login();
+
+		if (custom_user_login.length > 0){
+			user_login = custom_user_login;
+		}
+		
+		if (user_login == "root"){
 			return "/root";
 		}
 		else{
-			return "/home/%s".printf(user_name);
+			return "/home/%s".printf(user_login);
 		}
 	}
 	
@@ -500,4 +506,11 @@ namespace TeeJee.System{
 		}
 		log_msg("%s %lu\n".printf(seconds.to_string(), microseconds));
 	}	
+
+
+	public void set_numeric_locale(string type){
+		Intl.setlocale(GLib.LocaleCategory.NUMERIC, type);
+	    Intl.setlocale(GLib.LocaleCategory.COLLATE, type);
+	    Intl.setlocale(GLib.LocaleCategory.TIME, type);
+	}
 }

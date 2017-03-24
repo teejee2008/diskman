@@ -31,11 +31,12 @@ public class TimeoutCounter : GLib.Object {
 
 	public bool active = false;
 	public string process_to_kill = "";
-	public int seconds_to_wait = 30;
+	public const int DEFAULT_SECONDS_TO_WAIT = 60;
+	public int seconds_to_wait = 60;
 	public bool exit_app = false;
 	
 	public void kill_process_on_timeout(
-		string process_to_kill, int seconds_to_wait = 20, bool exit_app = false){
+		string process_to_kill, int seconds_to_wait = DEFAULT_SECONDS_TO_WAIT, bool exit_app = false){
 
 		this.process_to_kill = process_to_kill;
 		this.seconds_to_wait = seconds_to_wait;
@@ -50,7 +51,7 @@ public class TimeoutCounter : GLib.Object {
 		}
 	}
 
-	public void exit_on_timeout(int seconds_to_wait = 20){
+	public void exit_on_timeout(int seconds_to_wait = DEFAULT_SECONDS_TO_WAIT){
 		this.process_to_kill = "";
 		this.seconds_to_wait = seconds_to_wait;
 		this.exit_app = true;
@@ -82,11 +83,11 @@ public class TimeoutCounter : GLib.Object {
 
 			if (process_to_kill.length > 0){
 				Posix.system("killall " + process_to_kill);
-				stderr.printf("\n[timeout] Killed process" + ": %s\n".printf(process_to_kill));
+				log_debug("[timeout] Killed process" + ": %s".printf(process_to_kill));
 			}
 
 			if (exit_app){
-				stderr.printf("\n[timeout] Exit application\n");
+				log_debug("[timeout] Exit application");
 				exit(0);
 			}
 		}

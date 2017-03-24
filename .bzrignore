@@ -1,0 +1,8 @@
+src/indicator-diskman
+src/indicator-diskman-gtk
+installer/amd64
+installer/i386
+installer/*.deb
+installer/*.run
+designs/
+.git/
